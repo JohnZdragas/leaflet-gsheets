@@ -180,7 +180,7 @@ function addPoints(data) {
   var markerRadius = 100;
   
   //alert(centerPosition.toString);
-  alert(centerPosition);
+  //alert(centerPosition);
 
   for (var row = 0; row < data.length; row++) {
     var pointToConsider = new L.LatLng(data[row].lat, data[row].lon)
