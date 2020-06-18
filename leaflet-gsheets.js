@@ -23,7 +23,8 @@ window.addEventListener("DOMContentLoaded", init);
 // Create a new Leaflet map centered on the continental US
 var map = L.map("map").setView([40, -100], 16);
 
-/*// LOCATION SERVICE
+/*
+// LOCATION SERVICE
           map.locate({setView: true, maxZoom: 16});
           function onLocationFound(e) {
             L.marker(e.latlng).addTo(map)
