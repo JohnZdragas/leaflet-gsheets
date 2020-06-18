@@ -183,7 +183,7 @@ function addPoints(data) {
 
   for (var row = 0; row < data.length; row++) {
     var pointToConsider = new L.LatLng(data[row].lat, data[row].lon)
-    if (centerPosition.distanceTo( pointToConsider ) > 500000.0) {
+    if (centerPosition.distanceTo( pointToConsider ) > 50.0) {
         continue;
     }
     alert("Found one point close to Central Position " + centerPosition.toString() + ". Point is: " + pointToConsider.toString);
