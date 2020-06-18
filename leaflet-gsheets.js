@@ -73,7 +73,7 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent);
 
-var filterCircle = L.circle(L.latLng(40, -75), 5000, {
+var filterCircle = L.circle(L.latLng(40, -75), 50, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
@@ -260,7 +260,7 @@ function onLocationFound(e) {
     
     /*
     pointGroupLayer.setFilter(function showAirport(feature) {
-        return e.latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < 5000;
+        return e.latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < 50;
       }
     );
     */
