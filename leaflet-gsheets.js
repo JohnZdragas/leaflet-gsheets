@@ -23,9 +23,12 @@ window.addEventListener("DOMContentLoaded", init);
 // Create a new Leaflet map centered on the continental US
 var map = L.map("map").setView([40, -100], 4);
 
-// var map = L.map("map").fitWorld();
+// var map = L.map("map").fitWorld(); 13.	
+// Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας προσθέτουμε τον κώδικα:
 map.locate({setView: true, maxZoom: 6});
 
+
+// Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας και να τοποθετήσουμε και έναν marker στη θέση μας:
 /*
 // LOCATION SERVICE
           map.locate({setView: true, maxZoom: 16});
