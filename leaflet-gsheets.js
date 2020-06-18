@@ -249,7 +249,9 @@ function getColor(type) {
 }
 
 function onLocationFound(e) {
-    var radius = e.accuracy;
+    //var radius = e.accuracy;
+    var radius = 5000;
+  
 
     L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point - NEW 2!").openPopup();
 
