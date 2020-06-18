@@ -260,7 +260,7 @@ function onLocationFound(e) {
     
     /*
     pointGroupLayer.setFilter(function showAirport(feature) {
-        return e.latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < 500000;
+        return e.latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < 5000;
       }
     );
     */
