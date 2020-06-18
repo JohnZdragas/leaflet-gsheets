@@ -5,7 +5,7 @@
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
 
-var centerPosition = new L.LatLng(39.539740,21.774902);
+var centerPosition = new L.LatLng(39.539740, 21.774902);
 
 // init() is called as soon as the page loads
 function init() {
@@ -73,7 +73,7 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent);
 
-var filterCircle = L.circle(L.latLng(40, -75), 50, {
+var filterCircle = L.circle(L.latLng(40, -75), 500000, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
@@ -179,14 +179,15 @@ function addPoints(data) {
   // Ignore for point
   var markerRadius = 100;
   
-  alert(centerPosition.toString);
+  //alert(centerPosition.toString);
+  alert(centerPosition);
 
   for (var row = 0; row < data.length; row++) {
     var pointToConsider = new L.LatLng(data[row].lat, data[row].lon)
     if (centerPosition.distanceTo( pointToConsider ) < 5000.0) {
         continue;
     }
-    //alert("Found one point close to Central Position " + centerPosition.toString() + ". Point is: " + pointToConsider.toString);
+    alert("Found one point close to Central Position " + centerPosition.toString() + ". Point is: " + pointToConsider.toString);
     
     var marker;
     if (markerType == "circleMarker") {
