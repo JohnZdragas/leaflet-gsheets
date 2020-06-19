@@ -268,7 +268,8 @@ function onLocationFound(e) {
     );
     */
   
-    centerPosition = e.latlng;
+    var centerPosition = e.latlng;
+    alert(centerPosition.toString());
     
     init();    
 }
