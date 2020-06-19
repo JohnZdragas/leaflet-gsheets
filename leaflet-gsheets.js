@@ -257,10 +257,10 @@ function onLocationFound(e) {
 
     L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point - NEW 2!").openPopup();
 
-    //L.circle(e.latlng, radius).addTo(map);
+    L.circle(e.latlng, radius).addTo(map);
   
     // NEW code:  
-    //filterCircle.setLatLng(e.latlng);
+    filterCircle.setLatLng(e.latlng);
     
     /*
     pointGroupLayer.setFilter(function showAirport(feature) {
