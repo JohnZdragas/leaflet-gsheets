@@ -73,11 +73,12 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent);
 
-var filterCircle = L.circle(L.latLng(40, -75), 500000, {
+/*var filterCircle = L.circle(L.latLng(40, -75), 500000, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
 }).addTo(map);  
+*/
 
 map.on("locationfound", onLocationFound);
 map.on("locationerror", onLocationError);
