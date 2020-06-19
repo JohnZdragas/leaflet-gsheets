@@ -271,6 +271,7 @@ function onLocationFound(e) {
     var centerPosition = e.latlng;
     alert(centerPosition.toString());
     alert(mycenterPosition.toString());
+    alert(centerPosition.distanceTo(mycenterPosition).toString());
     
     init();    
 }
