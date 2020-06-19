@@ -188,7 +188,7 @@ function addPoints(data) {
     if (centerPosition.distanceTo( pointToConsider ) < 50000.0) {
         continue;
     }
-    //alert("Found one point close to Central Position " + centerPosition.toString() + ". Point is: " + pointToConsider.toString);
+    alert("Found one point close to Central Position " + centerPosition.toString() + ". Point is: " + pointToConsider.toString);
     
     var marker;
     if (markerType == "circleMarker") {
