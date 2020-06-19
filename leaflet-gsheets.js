@@ -5,7 +5,7 @@
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
 
-var mycenterPosition = new L.LatLng(39, 20);
+var mycenterPosition = new L.LatLng(38, 20);
 
 // init() is called as soon as the page loads
 function init() {
