@@ -262,12 +262,12 @@ function onLocationFound(e) {
     // NEW code:  
     filterCircle.setLatLng(e.latlng);
     
-    /*
+    
     pointGroupLayer.setFilter(function showAirport(feature) {
         return e.latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < 50;
       }
     );
-    */
+    
     
   
     var centerPosition = e.latlng;
