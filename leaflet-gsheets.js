@@ -5,7 +5,7 @@
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
 
-var mycenterPosition = new L.LatLng(41, 21);
+var centerPosition = new L.LatLng(40, -100);
 
 // init() is called as soon as the page loads
 function init() {
@@ -13,9 +13,9 @@ function init() {
   // these URLs come from Google Sheets 'shareable link' form
   // the first is the polygon layer and the second the points
   var polyURL =
-    "https://docs.google.com/spreadsheets/d/1F9nQ9WyD_lb1tTx0mthDxNlBT2A9fGWpVvfEt9PKd54/edit?usp=sharing";
+    "https://docs.google.com/spreadsheets/d/1QmQpMVIvCcqbLTKueRkE-JrkmDbIYOZrDVFfugfTRUg/edit?usp=sharing";
   var pointsURL =
-    "https://docs.google.com/spreadsheets/d/1ulZvNRxVwkfDWRuVi9tJinUdvzQPuRhLeH96gZc_xtU/edit?usp=sharing";
+    "https://docs.google.com/spreadsheets/d/1f1LhPN88uE59Yns2SwnkE8hqyPA4inEA3JcxuluFTGE/edit?usp=sharing";
 
   Tabletop.init({ key: polyURL, callback: addPolygons, simpleSheet: true });
   Tabletop.init({ key: pointsURL, callback: addPoints, simpleSheet: true }); // simpleSheet assumes there is only one table and automatically sends its data
@@ -24,26 +24,9 @@ window.addEventListener("DOMContentLoaded", init);
 
 // Create a new Leaflet map centered on the continental US
 var map = L.map("map").setView([40, -100], 4);
-
-// var map = L.map("map").fitWorld(); 13.	
-// Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας προσθέτουμε τον κώδικα:
+// var map = L.map("map").fitWorld();
 map.locate({setView: true, maxZoom: 6});
 
-
-// Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας και να τοποθετήσουμε και έναν marker στη θέση μας:
-/*
-// LOCATION SERVICE
-          map.locate({setView: true, maxZoom: 16});
-          function onLocationFound(e) {
-            L.marker(e.latlng).addTo(map)
-          }
-          map.on('locationfound', onLocationFound);
-
-          function onLocationError(e) {
-            alert(e.message);
-          }
-          //End of Location service,
-*/
 // This is the Carto Positron basemap
 var basemap = L.tileLayer(
   "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png",
@@ -78,7 +61,6 @@ var filterCircle = L.circle(L.latLng(40, -75), 500000, {
   weight: 1,
   fillOpacity: 0.4
 }).addTo(map);  
-
 
 map.on("locationfound", onLocationFound);
 map.on("locationerror", onLocationError);
@@ -180,12 +162,11 @@ function addPoints(data) {
   // Ignore for point
   var markerRadius = 100;
   
-  //alert(centerPosition.toString);
-  //alert(centerPosition);
-
+  alert(centerPosition.toString);
+  
   for (var row = 0; row < data.length; row++) {
     var pointToConsider = new L.LatLng(data[row].lat, data[row].lon)
-    if (centerPosition.distanceTo( pointToConsider ) > 50000.0) {
+    if (centerPosition.distanceTo( pointToConsider ) > 500000.0) {
         continue;
     }
     alert("Found one point close to Central Position " + centerPosition.toString() + ". Point is: " + pointToConsider.toString);
@@ -222,15 +203,17 @@ function addPoints(data) {
     });
 
     // AwesomeMarkers is used to create fancier icons
-    /*var icon = L.AwesomeMarkers.icon({
-      icon: "info-sign",
+    /*
+    var icon = L.AwesomeMarkers.icon({
+      icon: "info-point",
       iconColor: "white",
       markerColor: getColor(data[row].category),
       prefix: "glyphicon",
       extraClasses: "fa-rotate-0"
-    });
+    }); 
     */
-    var icon = L.AwesomeMarkers.icon({icon: 'info', prefix: 'fa', markerColor: 'green'});
+    
+    var icon = L.AwesomeMarkers.icon({icon: 'coffee', prefix: 'fa', markerColor: 'red', iconColor: '#f28f82'});
     if (!markerType.includes("circle")) {
       marker.setIcon(icon);
     }
@@ -252,8 +235,6 @@ function getColor(type) {
 
 function onLocationFound(e) {
     var radius = e.accuracy;
-    //var radius = 5000;
-  
 
     L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point - NEW 2!").openPopup();
 
@@ -262,18 +243,14 @@ function onLocationFound(e) {
     // NEW code:  
     filterCircle.setLatLng(e.latlng);
     
-    
+    /*
     pointGroupLayer.setFilter(function showAirport(feature) {
-        return e.latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < 50;
+        return e.latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < 500000;
       }
     );
-    
-    
+    */
   
-    var centerPosition = e.latlng;
-    alert(centerPosition.toString());
-    alert(mycenterPosition.toString());
-    alert(centerPosition.distanceTo(mycenterPosition));
+    centerPosition = e.latlng;
     
     init();    
 }
@@ -281,4 +258,3 @@ function onLocationFound(e) {
 function onLocationError(e) {
     alert(e.message);
 }
-
