@@ -26,12 +26,12 @@ var map = L.map("map").setView([40, 20], 4);
 // Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας και να τοποθετήσουμε και έναν marker στη θέση μας:
 
 // LOCATION SERVICE
-map.locate({setView: true, maxZoom: 16});
+/*map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
   L.marker(e.latlng).addTo(map)}
   map.on('locationfound', onLocationFound);
   function onLocationError(e) {
-    alert(e.message);}
+    alert(e.message);}*/
 //End of Location service,
 
 // This is the Carto Positron basemap
