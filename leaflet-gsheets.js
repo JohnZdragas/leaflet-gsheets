@@ -264,6 +264,7 @@ function onLocationFound(e) {
   weight: 1,
   fillOpacity: 0.4
 }).addTo(map);
+  alert("Found you!!!")
 }
   map.on('locationfound', onLocationFound);
   function onLocationError(e) {
