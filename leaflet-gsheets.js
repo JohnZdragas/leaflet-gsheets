@@ -269,7 +269,7 @@ function getColor(type) {
 // LOCATION SERVICE
 //map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
-  var radius = 100000; //100km
+  var radius = 150000; //150km
   L.marker(e.latlng).addTo(map);
   var filterCircle = L.circle(e.latlng, radius, {
   opacity: 1,
