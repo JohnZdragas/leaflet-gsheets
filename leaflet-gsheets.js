@@ -28,7 +28,13 @@ var map = L.map("map").setView([40, -30], 3);
 // LOCATION SERVICE
 map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
-  L.marker(e.latlng).addTo(map)}
+  L.marker(e.latlng).addTo(map)
+  var filterCircle = L.circle(e.latlng, 75000, {
+  opacity: 1,
+  weight: 1,
+  fillOpacity: 0.4
+}).addTo(map);
+}
   map.on('locationfound', onLocationFound);
   function onLocationError(e) {
     alert(e.message);}
