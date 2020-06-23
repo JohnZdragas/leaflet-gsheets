@@ -71,11 +71,13 @@ sidebar.addPanel(panelContent);
 }).addTo(map);*/
 
 //Κύκλος 75χλμ στα Τρίκαλα
-var filterCircle = L.circle(L.latLng(getLatLng()), 75000, {
+function onLocationFound(e) {
+var filterCircle = L.circle(L.latLng((e.latlng), 75000, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
 }).addTo(map);
+}
 
 map.on("locationfound", onLocationFound);
 map.on("locationerror", onLocationError);
