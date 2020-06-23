@@ -204,6 +204,7 @@ function addPoints(data) {
     if (poso_Distance < 50000) {
       alert (poso_Distance);
       marker = L.marker([data[row].lat, data[row].lon]);
+      marker.addTo(pointGroupLayer);
     }
     
     //var marker;
@@ -215,7 +216,7 @@ function addPoints(data) {
     } else {
       marker = L.marker([data[row].lat, data[row].lon]);
     }*/
-    marker.addTo(pointGroupLayer); //εμφανίζει όλα τα markers
+    //marker.addTo(pointGroupLayer); //εμφανίζει όλα τα markers
 
     // UNCOMMENT THIS LINE TO USE POPUPS
     //marker.bindPopup('<h2>' + data[row].location + '</h2>There's a ' + data[row].level + ' ' + data[row].category + ' here');
