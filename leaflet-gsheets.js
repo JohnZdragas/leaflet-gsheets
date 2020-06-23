@@ -269,13 +269,14 @@ function getColor(type) {
 // LOCATION SERVICE
 //map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
-  L.marker(e.latlng).addTo(map)
-  var filterCircle = L.circle(e.latlng, 75000, {
+  var radius = 100000; //100km
+  L.marker(e.latlng).addTo(map);
+  var filterCircle = L.circle(e.latlng, radius, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
 }).addTo(map);
-  alert("Found you!!!")
+  alert("Found you!!!");
 }
   map.on('locationfound', onLocationFound);
   function onLocationError(e) {
