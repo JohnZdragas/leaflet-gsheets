@@ -214,7 +214,7 @@ function addPoints(data) {
 function getColor(type) {
   switch (type) {
   case "Coffee Shop":
-    return "green";
+    return "beige";
   case "Restaurant":
     return "blue";
   default:
