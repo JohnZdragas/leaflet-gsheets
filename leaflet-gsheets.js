@@ -22,16 +22,16 @@ window.addEventListener("DOMContentLoaded", init);
 
 // Create a new Leaflet map centered on the continental US
 var map = L.map("map").setView([40, -30], 3);
-map.locate({setView: true, maxZoom: 6});
+//map.locate({setView: true, maxZoom: 6});
 // Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας και να τοποθετήσουμε και έναν marker στη θέση μας:
 
 // LOCATION SERVICE
-/*map.locate({setView: true, maxZoom: 16});
+map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
   L.marker(e.latlng).addTo(map)}
   map.on('locationfound', onLocationFound);
   function onLocationError(e) {
-    alert(e.message);}*/
+    alert(e.message);}
 //End of Location service,
 
 // This is the Carto Positron basemap
@@ -64,13 +64,13 @@ var panelContent = {
 sidebar.addPanel(panelContent);
 
 var marker;
-map.on('locationfound', function(ev){
+/*map.on('locationfound', function(ev){
     if (!marker) {
         marker = L.marker(ev.latlng);
     } else {
         marker.setLatLng(ev.latlng);
     }
-})
+})*/
 
 //Κύκλος 75χλμ στα Τρίκαλα
 var filterCircle = L.circle(L.latLng(39.555733, 21.767895), 75000, {
