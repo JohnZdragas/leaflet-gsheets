@@ -197,6 +197,7 @@ function addPoints(data) {
 
   for (var row = 0; row < data.length; row++) {
     var marker;
+    marker = L.marker([data[row].lat, data[row].lon]);
     /*if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
     } else if (markerType == "circle") {
