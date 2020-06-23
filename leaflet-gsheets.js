@@ -193,7 +193,7 @@ function addPoints(data) {
   // Marker radius
   // Wil be in pixels for circleMarker, metres for circle
   // Ignore for point
-  var markerRadius = 100;
+  var markerRadius = 1000;
 
   for (var row = 0; row < data.length; row++) {
     var marker;
