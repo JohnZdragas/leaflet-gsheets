@@ -5,8 +5,6 @@
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
 
-var centerPosition = new L.LatLng(40, -100);
-
 // init() is called as soon as the page loads
 function init() {
   // PASTE YOUR URLs HERE
@@ -23,9 +21,18 @@ function init() {
 window.addEventListener("DOMContentLoaded", init);
 
 // Create a new Leaflet map centered on the continental US
-var map = L.map("map").setView([40, -100], 4);
-// var map = L.map("map").fitWorld();
-map.locate({setView: true, maxZoom: 6});
+var map = L.map("map").setView([40, 20], 4);
+//map.locate({setView: true, maxZoom: 6});
+// Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας και να τοποθετήσουμε και έναν marker στη θέση μας:
+
+// LOCATION SERVICE
+map.locate({setView: true, maxZoom: 16});
+function onLocationFound(e) {
+  L.marker(e.latlng).addTo(map)}
+  map.on('locationfound', onLocationFound);
+  function onLocationError(e) {
+    alert(e.message);}
+//End of Location service,
 
 // This is the Carto Positron basemap
 var basemap = L.tileLayer(
@@ -55,12 +62,6 @@ var panelContent = {
   title: "<h2 id='sidebar-title'>No state selected</h2>"
 };
 sidebar.addPanel(panelContent);
-
-var filterCircle = L.circle(L.latLng(40, -75), 500000, {
-  opacity: 1,
-  weight: 1,
-  fillOpacity: 0.4
-}).addTo(map);  
 
 map.on("locationfound", onLocationFound);
 map.on("locationerror", onLocationError);
@@ -161,16 +162,8 @@ function addPoints(data) {
   // Wil be in pixels for circleMarker, metres for circle
   // Ignore for point
   var markerRadius = 100;
-  
-  alert(centerPosition.toString);
-  
+
   for (var row = 0; row < data.length; row++) {
-    var pointToConsider = new L.LatLng(data[row].lat, data[row].lon)
-    if (centerPosition.distanceTo( pointToConsider ) > 500000.0) {
-        continue;
-    }
-    alert("Found one point close to Central Position " + centerPosition.toString() + ". Point is: " + pointToConsider.toString);
-    
     var marker;
     if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
@@ -203,17 +196,13 @@ function addPoints(data) {
     });
 
     // AwesomeMarkers is used to create fancier icons
-    /*
     var icon = L.AwesomeMarkers.icon({
-      icon: "info-point",
+      icon: "info-sign",
       iconColor: "white",
       markerColor: getColor(data[row].category),
       prefix: "glyphicon",
       extraClasses: "fa-rotate-0"
-    }); 
-    */
-    
-    var icon = L.AwesomeMarkers.icon({icon: 'info', prefix: 'fa', markerColor: 'green'});
+    });
     if (!markerType.includes("circle")) {
       marker.setIcon(icon);
     }
@@ -231,30 +220,4 @@ function getColor(type) {
   default:
     return "green";
   }
-}
-
-function onLocationFound(e) {
-    var radius = e.accuracy;
-
-    L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point - NEW 2!").openPopup();
-
-    L.circle(e.latlng, radius).addTo(map);
-  
-    // NEW code:  
-    filterCircle.setLatLng(e.latlng);
-    
-    /*
-    pointGroupLayer.setFilter(function showAirport(feature) {
-        return e.latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < 500000;
-      }
-    );
-    */
-  
-    centerPosition = e.latlng;
-    
-    init();    
-}
-
-function onLocationError(e) {
-    alert(e.message);
 }
