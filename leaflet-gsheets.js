@@ -22,11 +22,11 @@ window.addEventListener("DOMContentLoaded", init);
 
 // Create a new Leaflet map centered on the continental US
 var map = L.map("map").setView([40, -30], 3);
-//map.locate({setView: true, maxZoom: 6});
+map.locate({setView: true, maxZoom: 6});
 // Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας και να τοποθετήσουμε και έναν marker στη θέση μας:
 
 // LOCATION SERVICE
-map.locate({setView: true, maxZoom: 16});
+/*map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
   L.marker(e.latlng).addTo(map)
   var filterCircle = L.circle(e.latlng, 75000, {
@@ -39,6 +39,7 @@ function onLocationFound(e) {
   function onLocationError(e) {
     alert(e.message);}
 //End of Location service,
+*/
 
 // This is the Carto Positron basemap
 var basemap = L.tileLayer(
@@ -253,3 +254,18 @@ function getColor(type) {
     return "green";
   }
 }
+
+// LOCATION SERVICE
+//map.locate({setView: true, maxZoom: 16});
+function onLocationFound(e) {
+  L.marker(e.latlng).addTo(map)
+  var filterCircle = L.circle(e.latlng, 75000, {
+  opacity: 1,
+  weight: 1,
+  fillOpacity: 0.4
+}).addTo(map);
+}
+  map.on('locationfound', onLocationFound);
+  function onLocationError(e) {
+    alert(e.message);}
+//End of Location service,
