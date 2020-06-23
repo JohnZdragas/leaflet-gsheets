@@ -199,7 +199,9 @@ function addPoints(data) {
   for (var row = 0; row < data.length; row++) {
     var pointToConsider = new L.LatLng(data[row].lat, data[row].lon);
     var poso_Distance = center_Point.distanceTo(pointToConsider);
+    if poso_Distance < 20000 {
     alert (poso_Distance);
+    }
     var marker;
     marker = L.marker([data[row].lat, data[row].lon]);
     /*if (markerType == "circleMarker") {
