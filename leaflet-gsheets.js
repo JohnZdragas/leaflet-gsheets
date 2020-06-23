@@ -71,7 +71,7 @@ sidebar.addPanel(panelContent);
 }).addTo(map);*/
 
 //Κύκλος 75χλμ στα Τρίκαλα
-var filterCircle = L.circle(getLatLng(), 75000, {
+var filterCircle = L.circle(L.latLng(getLatLng()), 75000, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
