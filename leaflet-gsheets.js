@@ -5,7 +5,7 @@
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
 var center_Point = new L.LatLng(40, 20);
-alert (center_Point.toString());
+alert ("Η θέση του σημείου αναφοράς είναι:"+ center_Point.toString());
 // init() is called as soon as the page loads
 function init() {
   // PASTE YOUR URLs HERE
