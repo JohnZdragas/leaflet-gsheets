@@ -63,7 +63,8 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent);
 
-var filterCircle = L.circle(L.latLng(40, -40), 500000, {
+//Κύκλος 50χλμ στα Τρίκαλα
+var filterCircle = L.circle(L.latLng(39.555733, 21.767895), 50000, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
