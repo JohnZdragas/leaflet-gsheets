@@ -63,12 +63,12 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent);
 
-var marker1;
+var marker;
 map.on('locationfound', function(ev){
-    if (!marker1) {
-        marker1 = L.marker(ev.latlng);
+    if (!marker) {
+        marker = L.marker(ev.latlng);
     } else {
-        marker1.setLatLng(ev.latlng);
+        marker.setLatLng(ev.latlng);
     }
 })
 
