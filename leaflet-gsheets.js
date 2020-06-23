@@ -63,7 +63,7 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent);
 
-var filterCircle = L.circle(L.latLng(40, -40), 50000, {
+var filterCircle = L.circle(L.latLng(40, -40), 500000, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
