@@ -197,13 +197,13 @@ function addPoints(data) {
 
   for (var row = 0; row < data.length; row++) {
     var marker;
-    if (markerType == "circleMarker") {
+    /*if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
     } else if (markerType == "circle") {
       marker = L.circle([data[row].lat, data[row].lon], {radius: markerRadius});
     } else {
       marker = L.marker([data[row].lat, data[row].lon]);
-    }
+    }*/
     marker.addTo(pointGroupLayer); //εμφανίζει όλα τα markers
 
     // UNCOMMENT THIS LINE TO USE POPUPS
