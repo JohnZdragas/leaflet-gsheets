@@ -193,7 +193,7 @@ function addPoints(data) {
   // Marker radius
   // Wil be in pixels for circleMarker, metres for circle
   // Ignore for point
-  var markerRadius = 1000;
+  var markerRadius = 100;
 
   for (var row = 0; row < data.length; row++) {
     var marker;
@@ -204,7 +204,7 @@ function addPoints(data) {
     } else {
       marker = L.marker([data[row].lat, data[row].lon]);
     }
-    marker.addTo(pointGroupLayer);
+    //marker.addTo(pointGroupLayer);
 
     // UNCOMMENT THIS LINE TO USE POPUPS
     //marker.bindPopup('<h2>' + data[row].location + '</h2>There's a ' + data[row].level + ' ' + data[row].category + ' here');
