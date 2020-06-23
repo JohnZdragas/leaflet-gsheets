@@ -6,6 +6,8 @@
  */
 var center_Point = new L.LatLng(39.665773, 22.396692);
 alert ("Η θέση του σημείου αναφοράς είναι: "+ center_Point.toString());
+var marker;
+
 // init() is called as soon as the page loads
 function init() {
   // PASTE YOUR URLs HERE
@@ -200,10 +202,12 @@ function addPoints(data) {
     var pointToConsider = new L.LatLng(data[row].lat, data[row].lon);
     var poso_Distance = center_Point.distanceTo(pointToConsider);
     if (poso_Distance < 50000) {
-    alert (poso_Distance);
+      alert (poso_Distance);
+      marker = L.marker([data[row].lat, data[row].lon]);
     }
-    var marker;
-    marker = L.marker([data[row].lat, data[row].lon]);
+    
+    //var marker;
+    //marker = L.marker([data[row].lat, data[row].lon]);
     /*if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
     } else if (markerType == "circle") {
