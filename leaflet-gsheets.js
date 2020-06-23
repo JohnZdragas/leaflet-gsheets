@@ -79,8 +79,8 @@ var filterCircle = L.circle(L.latLng((e.latlng), 75000, {
 }).addTo(map);
 }
 
-map.on("locationfound", onLocationFound);
-map.on("locationerror", onLocationError);
+//map.on("locationfound", onLocationFound);
+//map.on("locationerror", onLocationError);
 map.on("click", function() {
   sidebar.close(panelID);
 });
