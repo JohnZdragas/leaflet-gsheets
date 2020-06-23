@@ -203,7 +203,7 @@ function addPoints(data) {
       prefix: "glyphicon",
       extraClasses: "fa-rotate-0"
     });*/
-    var icon = L.AwesomeMarkers.icon({icon: 'bookmark', prefix: 'fa', markerColor: 'red', iconColor: 'darkpurple'});
+    var icon = L.AwesomeMarkers.icon({icon: 'cog', prefix: 'fa', markerColor: 'orange', iconColor: 'green'});
     if (!markerType.includes("circle")) {
       marker.setIcon(icon);
     }
