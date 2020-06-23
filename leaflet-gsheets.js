@@ -63,6 +63,15 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent);
 
+var marker1;
+map.on('locationfound', function(ev){
+    if (!marker1) {
+        marker1 = L.marker(ev.latlng);
+    } else {
+        marker1.setLatLng(ev.latlng);
+    }
+})
+
 //Κύκλος 75χλμ στα Τρίκαλα
 var filterCircle = L.circle(L.latLng(39.555733, 21.767895), 75000, {
   opacity: 1,
