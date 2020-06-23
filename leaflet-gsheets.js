@@ -197,7 +197,7 @@ function addPoints(data) {
 
     // AwesomeMarkers is used to create fancier icons
     var icon = L.AwesomeMarkers.icon({
-      icon: "info-sign",
+      icon: "home",
       iconColor: "white",
       markerColor: getColor(data[row].category),
       prefix: "glyphicon",
