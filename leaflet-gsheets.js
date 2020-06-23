@@ -4,8 +4,8 @@
  * Script to display two tables from Google Sheets as point and polygon layers using Leaflet
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
-var center_Point = new L.LatLng(40, 20);
-alert ("Η θέση του σημείου αναφοράς είναι:"+ center_Point.toString());
+var center_Point = new L.LatLng(38.592187, 21.324122);
+alert ("Η θέση του σημείου αναφοράς είναι: "+ center_Point.toString());
 // init() is called as soon as the page loads
 function init() {
   // PASTE YOUR URLs HERE
