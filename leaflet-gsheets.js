@@ -206,23 +206,6 @@ function addPoints(data) {
       //alert (poso_Distance);
     }
     
-    // LOCATION SERVICE
-    //map.locate({setView: true, maxZoom: 16});
-    function onLocationFound(e) {
-      var radius = 150000; //150km
-      L.marker(e.latlng).addTo(map);
-      var filterCircle = L.circle(e.latlng, radius, {
-        opacity: 1,
-        weight: 1,
-        fillOpacity: 0.4
-      }).addTo(map);
-      alert("Found you!!!");
-    }
-    map.on('locationfound', onLocationFound);
-    function onLocationError(e) {
-      alert(e.message);}
-    //End of Location service,
-
     var marker;
     marker = L.marker([data[row].lat, data[row].lon]);
     alert ("Υπάρχει το σημείο ενδιαφέροντος "+data[row].location+" "+((poso_Distance.toFixed())/1000)+" χιλιόμετρα απο την θέση σας.");
@@ -284,7 +267,7 @@ function getColor(type) {
   }
 }
 
-/*// LOCATION SERVICE
+// LOCATION SERVICE
 //map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
   var radius = 150000; //150km
@@ -299,4 +282,4 @@ function onLocationFound(e) {
   map.on('locationfound', onLocationFound);
   function onLocationError(e) {
     alert(e.message);}
-//End of Location service,*/
+//End of Location service,
