@@ -208,6 +208,7 @@ function addPoints(data) {
     
     var marker;
     marker = L.marker([data[row].lat, data[row].lon]);
+    alert ("Υπάρχει ένα σημείο ενδιαφέροντος "+poso_Distance/1000 " χιλιόμετρα απο την θέση σας.");
     /*if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
     } else if (markerType == "circle") {
