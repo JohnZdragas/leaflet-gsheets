@@ -208,7 +208,7 @@ function addPoints(data) {
     
     var marker;
     marker = L.marker([data[row].lat, data[row].lon]);
-    alert ("Υπάρχει ένα σημείο ενδιαφέροντος "+data[row].location+" "+((poso_Distance.toFixed())/1000)+" χιλιόμετρα απο την θέση σας.");
+    alert ("Υπάρχει το σημείο ενδιαφέροντος "+data[row].location+" "+((poso_Distance.toFixed())/1000)+" χιλιόμετρα απο την θέση σας.");
     /*if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
     } else if (markerType == "circle") {
@@ -277,7 +277,7 @@ function onLocationFound(e) {
   weight: 1,
   fillOpacity: 0.4
 }).addTo(map);
-  alert("Found you!!!");
+  //alert("Found you!!!");
 }
   map.on('locationfound', onLocationFound);
   function onLocationError(e) {
