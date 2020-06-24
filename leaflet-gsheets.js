@@ -6,7 +6,7 @@
  */
 var center_Point = new L.LatLng(39.665773, 22.396692);
 alert ("Η θέση του σημείου αναφοράς είναι: "+ center_Point.toString());
-var marker;
+//var marker;
 
 // init() is called as soon as the page loads
 function init() {
