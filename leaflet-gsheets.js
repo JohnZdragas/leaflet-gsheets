@@ -4,8 +4,8 @@
  * Script to display two tables from Google Sheets as point and polygon layers using Leaflet
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
-//var center_Point = new L.LatLng(47.570272, -122.214858);
-//alert ("Η θέση του σημείου αναφοράς είναι: "+ center_Point.toString());
+var center_Point = new L.LatLng(47.570272, -122.214858);
+alert ("Η θέση του σημείου αναφοράς είναι: "+ center_Point.toString());
 // init() is called as soon as the page loads
 function init() {
   // PASTE YOUR URLs HERE
@@ -171,12 +171,12 @@ function addPoints(data) {
   var markerRadius = 100;
 
   for (var row = 0; row < data.length; row++) {
-    //var pointToConsider = new L.LatLng(data[row].lat, data[row].lon);
-    //var poso_Distance = center_Point.distanceTo(pointToConsider);
-    //if (poso_Distance > 50000) {
-      //continue;
-      //alert (poso_Distance);
-    //}
+    var pointToConsider = new L.LatLng(data[row].lat, data[row].lon);
+    var poso_Distance = center_Point.distanceTo(pointToConsider);
+    if (poso_Distance > 50000) {
+      continue;
+      alert (poso_Distance);
+    }
     var marker;
     if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
