@@ -4,9 +4,6 @@
  * Script to display two tables from Google Sheets as point and polygon layers using Leaflet
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
-//var center_Point = new L.LatLng(39.665773, 22.396692);
-//alert ("Η θέση του σημείου αναφοράς είναι: "+ center_Point.toString());
-//var marker;
 
 // init() is called as soon as the page loads
 function init() {
@@ -25,24 +22,17 @@ window.addEventListener("DOMContentLoaded", init);
 
 // Create a new Leaflet map centered on the continental US
 var map = L.map("map").setView([40, -30], 3);
-//map.locate({setView: true, maxZoom: 6});
+map.locate({setView: true, maxZoom: 6});
 // Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας και να τοποθετήσουμε και έναν marker στη θέση μας:
 
 // LOCATION SERVICE
 /*map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
-  L.marker(e.latlng).addTo(map)
-  var filterCircle = L.circle(e.latlng, 75000, {
-  opacity: 1,
-  weight: 1,
-  fillOpacity: 0.4
-}).addTo(map);
-}
+  L.marker(e.latlng).addTo(map)}
   map.on('locationfound', onLocationFound);
   function onLocationError(e) {
-    alert(e.message);}
+    alert(e.message);}*/
 //End of Location service,
-*/
 
 // This is the Carto Positron basemap
 var basemap = L.tileLayer(
@@ -73,34 +63,8 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent);
 
-var marker;
-/*map.on('locationfound', function(ev){
-    if (!marker) {
-        marker = L.marker(ev.latlng);
-    } else {
-        marker.setLatLng(ev.latlng);
-    }
-})*/
-/*
-//Κύκλος 75χλμ στα Τρίκαλα
-var filterCircle = L.circle(L.latLng(39.555733, 21.767895), 75000, {
-  opacity: 1,
-  weight: 1,
-  fillOpacity: 0.4
-}).addTo(map);
-*/
-
-//Κύκλος 75χλμ στα Τρίκαλα
-/*function onLocationFound(e) {
-var filterCircle = L.circle(L.latLng((e.latlng), 75000, {
-  opacity: 1,
-  weight: 1,
-  fillOpacity: 0.4
-}).addTo(map);
-}*/
-
-//map.on("locationfound", onLocationFound);
-//map.on("locationerror", onLocationError);
+map.on("locationfound", onLocationFound);
+map.on("locationerror", onLocationError);
 map.on("click", function() {
   sidebar.close(panelID);
 });
@@ -200,24 +164,15 @@ function addPoints(data) {
   var markerRadius = 100;
 
   for (var row = 0; row < data.length; row++) {
-    //var pointToConsider = new L.LatLng(data[row].lat, data[row].lon);
-    //var poso_Distance = center_Point.distanceTo(pointToConsider);
-    //if (poso_Distance > 50000) {
-     // continue;
-      //alert (poso_Distance);
-    }
-    
     var marker;
-    marker = L.marker([data[row].lat, data[row].lon]);
-    //alert ("Υπάρχει το σημείο ενδιαφέροντος "+data[row].location+" "+((poso_Distance.toFixed())/1000)+" χιλιόμετρα απο την θέση σας.");
-    /*if (markerType == "circleMarker") {
+    if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
     } else if (markerType == "circle") {
       marker = L.circle([data[row].lat, data[row].lon], {radius: markerRadius});
     } else {
       marker = L.marker([data[row].lat, data[row].lon]);
-    }*/
-    marker.addTo(pointGroupLayer); //εμφανίζει όλα τα markers
+    }
+    marker.addTo(pointGroupLayer);
 
     // UNCOMMENT THIS LINE TO USE POPUPS
     //marker.bindPopup('<h2>' + data[row].location + '</h2>There's a ' + data[row].level + ' ' + data[row].category + ' here');
@@ -241,20 +196,19 @@ function addPoints(data) {
     });
 
     // AwesomeMarkers is used to create fancier icons
-    /*var icon = L.AwesomeMarkers.icon({
+    var icon = L.AwesomeMarkers.icon({
       icon: "star",
       iconColor: "white",
       markerColor: getColor(data[row].category),
       prefix: "glyphicon",
       extraClasses: "fa-rotate-0"
-    });*/
-    var icon = L.AwesomeMarkers.icon({icon: 'cog', prefix: 'fa', markerColor: 'orange', iconColor: 'green'});
+    });
     if (!markerType.includes("circle")) {
       marker.setIcon(icon);
     }
   }
 }
-/*
+
 // Returns different colors depending on the string passed
 // Used for the points layer
 function getColor(type) {
@@ -267,21 +221,3 @@ function getColor(type) {
     return "green";
   }
 }
-
-// LOCATION SERVICE
-//map.locate({setView: true, maxZoom: 16});
-function onLocationFound(e) {
-  var radius = 150000; //150km
-  L.marker(e.latlng).addTo(map);
-  var filterCircle = L.circle(e.latlng, radius, {
-  opacity: 1,
-  weight: 1,
-  fillOpacity: 0.4
-}).addTo(map);
-  //alert("Found you!!!");
-}
-  map.on('locationfound', onLocationFound);
-  function onLocationError(e) {
-    alert(e.message);}
-//End of Location service,
-*/
