@@ -69,7 +69,12 @@ map.on("locationerror", onLocationError);
 map.on("click", function() {
   sidebar.close(panelID);
 });
-
+//Κύκλος 75χλμ στα Τρίκαλα
+var filterCircle = L.circle(L.latLng(39.555733, 21.767895), 75000, {
+  opacity: 1,
+  weight: 1,
+  fillOpacity: 0.4
+}).addTo(map);
 // These are declared outisde the functions so that the functions can check if they already exist
 var polygonLayer;
 var pointGroupLayer;
