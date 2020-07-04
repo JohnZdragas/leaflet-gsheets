@@ -253,7 +253,7 @@ function addPoints(data) {
     }
   }
 }
-
+/*
 // Returns different colors depending on the string passed
 // Used for the points layer
 function getColor(type) {
@@ -283,3 +283,4 @@ function onLocationFound(e) {
   function onLocationError(e) {
     alert(e.message);}
 //End of Location service,
+*/
