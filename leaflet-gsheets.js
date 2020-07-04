@@ -4,8 +4,8 @@
  * Script to display two tables from Google Sheets as point and polygon layers using Leaflet
  * The Sheets are then imported using Tabletop.js and overwrite the initially laded layers
  */
-var center_Point = new L.LatLng(39.665773, 22.396692);
-alert ("Η θέση του σημείου αναφοράς είναι: "+ center_Point.toString());
+//var center_Point = new L.LatLng(39.665773, 22.396692);
+//alert ("Η θέση του σημείου αναφοράς είναι: "+ center_Point.toString());
 //var marker;
 
 // init() is called as soon as the page loads
@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 // Create a new Leaflet map centered on the continental US
 var map = L.map("map").setView([40, -30], 3);
-map.locate({setView: true, maxZoom: 6});
+//map.locate({setView: true, maxZoom: 6});
 // Για να προσθέσουμε την δυνατότητα εντοπισμού της θέσης μας και να τοποθετήσουμε και έναν marker στη θέση μας:
 
 // LOCATION SERVICE
@@ -81,13 +81,14 @@ var marker;
         marker.setLatLng(ev.latlng);
     }
 })*/
-
+/*
 //Κύκλος 75χλμ στα Τρίκαλα
 var filterCircle = L.circle(L.latLng(39.555733, 21.767895), 75000, {
   opacity: 1,
   weight: 1,
   fillOpacity: 0.4
 }).addTo(map);
+*/
 
 //Κύκλος 75χλμ στα Τρίκαλα
 /*function onLocationFound(e) {
@@ -199,16 +200,16 @@ function addPoints(data) {
   var markerRadius = 100;
 
   for (var row = 0; row < data.length; row++) {
-    var pointToConsider = new L.LatLng(data[row].lat, data[row].lon);
-    var poso_Distance = center_Point.distanceTo(pointToConsider);
-    if (poso_Distance > 50000) {
-      continue;
+    //var pointToConsider = new L.LatLng(data[row].lat, data[row].lon);
+    //var poso_Distance = center_Point.distanceTo(pointToConsider);
+    //if (poso_Distance > 50000) {
+     // continue;
       //alert (poso_Distance);
     }
     
     var marker;
     marker = L.marker([data[row].lat, data[row].lon]);
-    alert ("Υπάρχει το σημείο ενδιαφέροντος "+data[row].location+" "+((poso_Distance.toFixed())/1000)+" χιλιόμετρα απο την θέση σας.");
+    //alert ("Υπάρχει το σημείο ενδιαφέροντος "+data[row].location+" "+((poso_Distance.toFixed())/1000)+" χιλιόμετρα απο την θέση σας.");
     /*if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
     } else if (markerType == "circle") {
